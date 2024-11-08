@@ -1,0 +1,61 @@
+maryan.kiwan,asmaa.ghrayeb
+212514681,212017719
+
+Question 1:
+Here are the descriptions of the five packages:
+
+a. ascii_art: This package serves as the core of the algorithm execution. It comprises three classes:
+   - 'AsciiArtAlgorithm', which contains a 'run' method and includes two members, 'SubImagesChars' and
+   'SubImgCharMatcher'.
+   - 'KeyboardInput' and 'shell', both of which utilize the aforementioned classes. Additionally, 'shell'
+   incorporates a 'SubImagesChars' member and employs 'SubImgCharMatcher'.
+
+b. ascii_output: This package defines an interface named 'AsciiOutput', along with two implementing classes,
+'Console' and 'HTML', which facilitate the display of ASCII images.
+
+c. exception: This package contains two classes that extend the 'Throwable' class, serving the purpose of
+throwing exceptions when necessary.
+
+d. image: This package introduces two classes:
+   - 'mage', which represents individual images using colors.
+   - 'ubImagesChars', responsible for resolving the complete image post-padding and computing brightness for
+   each sub-image.
+
+e. image_char_matching: This package includes 'CharConverter' and 'ubImgCharMatcher', with the latter
+utilizing 'CharConverter' to determine brightness levels for each character.
+
+Question 2:
+In the 'ubImgCharMatcher', we utilized a 'hashMap' to store all originally calculated brightness values. We
+implemented the 'add' and 'remove' methods using a 'reeMap', where the key is a 'Double' representing
+brightness, allowing us to maintain order for efficient retrieval of minimum and maximum brightness values in
+logarithmic time. The value associated with each brightness key is a 'reeSet', which stores characters
+(potentially more than one) in an ordered set. This arrangement ensures that when searching for the closest
+brightness value, the operation can be completed in O(log n) time in the worst-case scenario. Both 'Add' and
+'remove' methods run in O(log n) time complexity. Additionally, in each function call, we retrieve the
+original brightness value from the hashmap in constant time (O(1)*). Furthermore, we utilized another
+'reeSet' to maintain the current charset without their associated brightness values.
+
+Question 3:
+The exception package encompasses two classes extending the 'throwable' class. These classes are designed to
+handle exceptions effectively:
+- 'CommandException': This class is responsible for throwing an exception in cases where the user inputs an
+incorrect command.
+- 'BoundsException': This class throws an error when attempts are made to resolve the image beyond the legal
+boundaries.
+In the 'run' function within the 'shell' class, we implement exception handling to catch all exceptions.
+Subsequently, we print out all the exceptions encountered during runtime.
+
+
+Question 4:
+We have expanded the API of the 'ubImgCharMatcher' class with two additional public methods to enhance
+functionality:
+
+1. 'isCharsEmpty': This method serves to verify whether the charset within the 'SubImgCharMatcher' is empty or
+ not. We have delegated the responsibility of managing the charset entirely to this class.
+
+2. 'getCharset': This method returns an iterable data structure containing the charset. It is intended for use
+ by the shell to facilitate printing of the charset.
+
+
+Question 5:
+No, We didn't change any of the given classes.
