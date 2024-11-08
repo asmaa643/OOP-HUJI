@@ -1,0 +1,26 @@
+
+Question 1:
+Clever player fills the board column column by order, So he has the chance to
+win more that whatever player, who chooses his filling randomly, so he would
+fill a cell and prevents clever from winning randomly (less than 55% of times).
+
+Genius player fills the board starting from the second diagonal, and starting
+from the last row's first cell, he also uses clever strategy if this didn't
+work. But first he checks if the other player has filled two continuous cells
+in some column and prevent him from winning by filling the cell down to these
+(if there is one), we know that winStreak value is at least 3, so this
+strategy makes genius player win every single game with clever, beacuse clever
+starts from filling columns, and he can't fill diagonals. Why genius can win
+at least 55% of games when he plays with whatever? Beacause if whatever fills
+two continuous cells in some columns he can't win, and if he can't win filling
+the diagonal, he can when using clever strategy.
+
+Question 2:
+Using a Player interface and its implementing classes based on 3 pillars of
+OOP:
+- Abstraction: Defines fundamental player actions.
+- Encapsulation: We hide the specific player details in each class.
+- Polymorphism: We make it easy to handle various player types using the same
+interface.
+These help creating a software that is easy to work with, and helps expanding
+in the future.
