@@ -1,0 +1,39 @@
+
+1. We chose the second strategy from section 1.7:
+Advantages:
+- Encapsulation: Only the manager can add/remove an object for/from the game.
+-  A strategy is only responsible of activating the strategy itself, not adding the relevant
+    objects and not removing the bricks, also abstraction.
+Disadvantages:
+- Adding more public methods to the manager, so it doesn't have Hiding information.
+
+2. Graphic and numeric display from 1.8:
+We implemented a NumericDisplay class that extends GameObject, it overrides the method update to update the
+number with the relevant color. We also implemented GraphicDisplay, it holds an array to save the heart
+objects, and it constructs the NumericDisplay. They both have the same tries counter, so they both update the
+tries number by reference. GraphicDisplay is called by the manager in the update method.
+
+3. Explanation of the implementations of each of the special behaviors (except the double):
+We implemented a factory called Strategy, to choose the strategy for each brick with its probability to
+choose. For each strategy we implemented a class, each one implements the CollisionStrategy interface:
+- AdditionalBall: On collision it removes the brick calling a method in the manager class, it also calls a
+method in the manager to add a puck, twice (2 pucks).
+- AdditionalPaddle: extends Paddle, On collision it removes the brick calling a method in the manager class,
+it also calls a method in the manager to add the puddle (this) if there is no other second paddle.
+- BasicCollisionStrategy: On collision it removes the brick calling a method in the manager class.
+- CameraFocus: On collision it removes the brick calling a method in the manager class, it calls setCamera
+method of the brickerGameManager field.
+- ReturnHearts: On collision it removes the brick calling a method in the manager class, it also calls a
+method in the manager to add a falling heart, we added a Heart object, so on collision with the main paddle
+it will be added to the display.
+
+ 4. Explanation of the implementation of the double behavior in part 2.2.5:
+ We implemented a class that has two fields of two CollisionStrategy, it gets them in the constructor,
+ which mean we used Decorator (the design of the code).
+ Refer in the explanation of how you limited the amount of behaviors: in Strategy (factory), we used a
+ layerCounter, that limits the double behavior layers: after two double behaviors it chooses from the 4
+ remaining strategies. If two double strategies were chosen for a double one, we remove one. So in all the
+ cases we limit the strategies to 3.
+
+ 5. In part 2 of the exercise we only added made changes to the API of the BrickerGameManager, we added public
+  methods to call them from the strategies (to add/remove objects).
